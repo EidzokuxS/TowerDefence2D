@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3942668427418755157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3724871820173159715}
+  - component: {fileID: 6819141481316379241}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3724871820173159715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3942668427418755157}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4029576585360173237}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &6819141481316379241
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3942668427418755157}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.05}
+  serializedVersion: 2
+  m_Radius: 0.054030735
 --- !u!1 &4029576585360173238
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +59,7 @@ GameObject:
   - component: {fileID: 4029576585360173237}
   - component: {fileID: 2542233691250894733}
   - component: {fileID: -8373536011605919622}
-  - component: {fileID: 8988390552994126117}
+  - component: {fileID: 5539638504164191540}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -27,11 +75,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4029576585360173238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 4.71, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4029576586156811214}
+  - {fileID: 3724871820173159715}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -77,17 +126,17 @@ MonoBehaviour:
   _teamID: 0
   _scoreValue: 0
   _mass: 1
-  _thrust: 10
+  _thrust: 1000
   _mobility: 1000
-  _maxLinearVelocity: 10
-  _maxAngularVelocity: 1000
+  _maxLinearVelocity: 1
+  _maxAngularVelocity: 360
   _turrets: []
   _maxEnergy: 0
   _maxAmmo: 0
   _energyRegenPerSec: 0
   IsIndestructibleBonusActive: 0
   IsSpeedBonusActive: 0
---- !u!114 &8988390552994126117
+--- !u!114 &5539638504164191540
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,7 +145,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4029576585360173238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99fe0fededfe66445b84c97a5f621223, type: 3}
+  m_Script: {fileID: 11500000, guid: a74c94c2c5fced54dbe93da278267a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _AIBehaviour: 1
@@ -120,6 +169,7 @@ GameObject:
   - component: {fileID: 4029576586156811214}
   - component: {fileID: 4029576586156811212}
   - component: {fileID: 4029576586156811213}
+  - component: {fileID: 5776671263272690976}
   m_Layer: 0
   m_Name: ModelViev
   m_TagString: Untagged
@@ -214,3 +264,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5776671263272690976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4029576586156811215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca688594ebc5854c8b3c9ae7a3e7280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

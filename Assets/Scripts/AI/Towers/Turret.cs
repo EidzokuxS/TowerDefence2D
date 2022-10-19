@@ -15,7 +15,7 @@ namespace SpaceShooter
 
         public bool CanFire => _reloadTimer <= 0;
 
-        private SpaceShip _weapon;
+        private SpaceShip _ship;
 
         #endregion
 
@@ -23,13 +23,16 @@ namespace SpaceShooter
 
         private void Start()
         {
-            _weapon = transform.parent.GetComponent<SpaceShip>();
+            if (_ship)
+                _ship = transform.parent.GetComponent<SpaceShip>();
         }
 
         private void Update()
         {
             if (_reloadTimer > 0)
                 _reloadTimer -= Time.deltaTime;
+            else if (Mode == TurretMode.Auto)
+                Fire();
         }
         #endregion
 
@@ -41,11 +44,15 @@ namespace SpaceShooter
 
             if (_reloadTimer > 0) return;
 
-            if (_weapon.DrawEnergy(_turretProperties.EnergyUsage) == false)
-                return;
 
-            if (_weapon.DrawAmmo(_turretProperties.AmmoUsage) == false)
-                return;
+            if (_ship)
+            {
+                if (_ship.DrawEnergy(_turretProperties.EnergyUsage) == false)
+                    return;
+
+                if (_ship.DrawAmmo(_turretProperties.AmmoUsage) == false)
+                    return;
+            }
 
 
             Projectile projectile = Instantiate(_turretProperties.ProjectilePrefab, transform.parent).GetComponent<Projectile>();

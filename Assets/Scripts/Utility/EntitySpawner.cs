@@ -1,3 +1,4 @@
+using TowerDefence;
 using UnityEngine;
 
 namespace SpaceShooter
@@ -17,7 +18,7 @@ namespace SpaceShooter
 
         [SerializeField] private CircleArea _circleArea;
 
-        [SerializeField] private AIPointPatrol _moveTarget;
+        [SerializeField] private Path _path;
 
         [SerializeField] private SpawnMode _spawnMode;
 
@@ -73,9 +74,9 @@ namespace SpaceShooter
 
                 entities.transform.position = _circleArea.GetRandomInsideZone();
 
-                if (entities.TryGetComponent<AIController>(out var ai))
+                if (entities.TryGetComponent<TD_PatrolController>(out var ai))
                 {
-                    ai.SetPatrolBehaviour(_moveTarget);
+                    ai.SetPath(_path);
                 }
             }
         }

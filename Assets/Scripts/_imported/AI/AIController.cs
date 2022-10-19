@@ -103,10 +103,10 @@ namespace SpaceShooter
         private void UpdateBehaviourPatrol()
         {
             ActionFindNewMovePosition();
-            ActionAvoidCollision();
+            //ActionAvoidCollision();
             ActionControlShip();
-            ActionFindNewAttackTarget();
-            ActionFire();
+            //ActionFindNewAttackTarget();
+            //ActionFire();
         }
 
         #region Timers
@@ -143,16 +143,7 @@ namespace SpaceShooter
 
                         if (isInsidePatrolZone == true)
                         {
-                            if (_AIBehaviour == AIBehaviour.Patrol)
-                            {
-                                if (_randomizeDirectionTimer.IsFinished == true)
-                                {
-                                    Vector2 newPoint = Random.onUnitSphere * _patrolPoint.Radius + _patrolPoint.transform.position;
-                                    _movePosition = newPoint;
-
-                                    _randomizeDirectionTimer.Start(_randomSelectMovePointTime);
-                                }
-                            }
+                            GetNewPoint();
 
                             if (_AIBehaviour == AIBehaviour.FixedPatrol)
                             {
@@ -179,6 +170,20 @@ namespace SpaceShooter
                     }
                 }
 
+            }
+        }
+
+        protected virtual void GetNewPoint()
+        {
+            if (_AIBehaviour == AIBehaviour.Patrol)
+            {
+                if (_randomizeDirectionTimer.IsFinished == true)
+                {
+                    Vector2 newPoint = Random.onUnitSphere * _patrolPoint.Radius + _patrolPoint.transform.position;
+                    _movePosition = newPoint;
+
+                    _randomizeDirectionTimer.Start(_randomSelectMovePointTime);
+                }
             }
         }
 

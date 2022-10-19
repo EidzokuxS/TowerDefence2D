@@ -82,15 +82,15 @@ namespace SpaceShooter
                             Instantiate(_explosionPrefabs[0], transform.position, Quaternion.identity);
                         }
 
-                        if (destructible != Player.Instance.ActiveShip)
+                        /*if (destructible != Player.Instance.ActiveShip)
                         {
                             Player.Instance.ChangeScore(destructible.ScoreValue * _damage / 10);
-                        }
+                        }*/
 
                         destructible.ApplyDamage(_damage);
 
-                        if (destructible.HitPoints <= 0)
-                            Player.Instance.AddKill();
+                        //if (destructible.HitPoints <= 0)
+                        //Player.Instance.AddKill();
                     }
 
                     if (_projectileType == ProjectileType.Plasma && _splashRange > 0)
@@ -120,7 +120,16 @@ namespace SpaceShooter
             }
         }
 
-        #endregion  
+        #endregion
+
+        #region Public API
+
+        public void SetTarget(Destructible target)
+        {
+            //TODO
+        }
+
+        #endregion
 
         #region Private API
 

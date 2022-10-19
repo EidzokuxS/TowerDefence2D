@@ -183,7 +183,7 @@ namespace SpaceShooter
         {
             var DestructionEffect = GetComponentInChildren<EffectTrigger>();
 
-            DestructionEffect.TriggerEffect(transform.position);
+            //DestructionEffect.TriggerEffect(transform.position);
 
             base.OnDestruction();
         }
