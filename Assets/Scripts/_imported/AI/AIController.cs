@@ -103,7 +103,7 @@ namespace SpaceShooter
         private void UpdateBehaviourPatrol()
         {
             ActionFindNewMovePosition();
-            //ActionAvoidCollision();
+            ActionAvoidCollision();
             ActionControlShip();
             //ActionFindNewAttackTarget();
             //ActionFire();
@@ -189,9 +189,11 @@ namespace SpaceShooter
 
         private void ActionAvoidCollision()
         {
-            if (Physics2D.Raycast(transform.position, transform.up, +_evadeRayLenght) == true)
+            var collision = Physics2D.Raycast(transform.position, transform.up, +_evadeRayLenght);
+
+            if (collision == true && collision != transform.GetComponentInChildren<Collider2D>())
             {
-                _movePosition = transform.position + transform.right * 100.0f;
+                _movePosition = transform.position + transform.right;
             }
         }
 

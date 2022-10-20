@@ -1,10 +1,10 @@
-using TowerDefence;
+using SpaceShooter;
 using UnityEngine;
 
-namespace SpaceShooter
+namespace TowerDefence
 {
     //[RequireComponent(typeof(CircleArea))]
-    public class EntitySpawner : MonoBehaviour
+    public abstract class Spawner : MonoBehaviour
     {
         #region Properties
 
@@ -14,11 +14,8 @@ namespace SpaceShooter
             Loop
         }
 
-        [SerializeField] private Entity[] _entityPrefabs;
 
         [SerializeField] private CircleArea _circleArea;
-
-        [SerializeField] private Path _path;
 
         [SerializeField] private SpawnMode _spawnMode;
 
@@ -57,27 +54,15 @@ namespace SpaceShooter
         }
         #endregion
 
-
         #region Private API
+        protected abstract GameObject GenerateSpawnedEntity();
 
         private void SpawnEntities()
         {
-            if (_entityPrefabs == null)
-                return;
-
             for (int i = 0; i < _spawnCount; i++)
             {
-
-                int index = Random.Range(0, _entityPrefabs.Length);
-
-                GameObject entities = Instantiate(_entityPrefabs[index].gameObject);
-
+                var entities = GenerateSpawnedEntity();
                 entities.transform.position = _circleArea.GetRandomInsideZone();
-
-                if (entities.TryGetComponent<TD_PatrolController>(out var ai))
-                {
-                    ai.SetPath(_path);
-                }
             }
         }
 

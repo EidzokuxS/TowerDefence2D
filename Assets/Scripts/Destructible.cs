@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TowerDefence;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -57,6 +58,11 @@ namespace SpaceShooter
         #endregion
 
         #region Public API
+        protected void UseAssetSettings(EnemyAsset asset)
+        {
+            _hitPoints = asset._hitPoints;
+            _scoreValue = asset._scoreValue;
+        }
 
         /// <summary>
         /// Apply damage to the object

@@ -1,3 +1,4 @@
+using TowerDefence;
 using UnityEngine;
 
 
@@ -103,6 +104,11 @@ namespace SpaceShooter
         #endregion
 
         #region Public API
+        new public void UseAssetSettings(EnemyAsset asset)
+        {
+            MaxLinearVelocity = asset._moveSpeed;
+            base.UseAssetSettings(asset);
+        }
 
         /// <summary>
         /// Linear thrust controller -1.0 to 1.0
@@ -113,6 +119,8 @@ namespace SpaceShooter
         /// Rotation thrust controller -1.0 to 1.0
         /// </summary>
         public float TorqueControl { get; set; }
+
+
 
         #region Temp
         public bool DrawEnergy(int amount)
@@ -187,6 +195,7 @@ namespace SpaceShooter
 
             base.OnDestruction();
         }
+
 
         /* private void InitAmmunition()
          {

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbd630947c18ee4a857327c479ea565, type: 3}
+  m_Name: Archdemon
+  m_EditorClassIdentifier: 
+  _color: {r: 0.27843142, g: 0.8388077, b: 1, a: 1}
+  _spriteScale: {x: 4, y: 4}
+  _animations: {fileID: 9100000, guid: 72643e9f6666f6a47ad6687737f63e85, type: 2}
+  _moveSpeed: 1.5
+  _hitPoints: 3
+  _scoreValue: 4
+  _colliderRadius: 0.285
+  _colliderOffset: {x: 0, y: -0.15}
