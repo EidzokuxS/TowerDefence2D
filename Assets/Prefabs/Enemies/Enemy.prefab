@@ -121,7 +121,19 @@ MonoBehaviour:
   m_Nickname: 
   _eventOnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -7367202651152676750}
+        m_TargetAssemblyTypeName: TowerDefence.Enemy, Assembly-CSharp
+        m_MethodName: DropGoldOnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _indestructible: 0
   _hitPoints: 2
   _teamID: 0
@@ -159,6 +171,21 @@ MonoBehaviour:
   _shootDelay: 0
   _precisionCoefficient: 0
   _evadeRayLenght: 0
+  OnPathEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7367202651152676750}
+        m_TargetAssemblyTypeName: TowerDefence.Enemy, Assembly-CSharp
+        m_MethodName: DamagePlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-7367202651152676750
 MonoBehaviour:
   m_ObjectHideFlags: 0

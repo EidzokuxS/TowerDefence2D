@@ -18,6 +18,7 @@ namespace SpaceShooter
         public int Score { get; private set; }
         public int KillCount { get; private set; }
 
+
         //[SerializeField] private CameraController _cameraController;
         //[SerializeField] private MovementController _movementController;
 
@@ -38,7 +39,9 @@ namespace SpaceShooter
         private void Start()
         {
             _currentLives = _livesAmount;
-            _ship.EventOnDeath.AddListener(OnShipDestruction);
+
+            if (_ship != null)
+                _ship.EventOnDeath.AddListener(OnShipDestruction);
 
             if (_currentLives == _livesAmount)
                 Respawn();
@@ -76,6 +79,14 @@ namespace SpaceShooter
 
         #region Public API
 
+        public void TakeDamage(int damage)
+        {
+            _currentLives -= damage;
+
+            if (_livesAmount <= 0)
+                LevelSequenceController.Instance.FinishCurrentLevel(false);
+        }
+
         public void AddKill()
         {
             KillCount++;
@@ -84,9 +95,7 @@ namespace SpaceShooter
         public void ChangeScore(int amount)
         {
             if (Score + amount < 0)
-            {
                 Score = 0;
-            }
 
             Score += amount;
         }

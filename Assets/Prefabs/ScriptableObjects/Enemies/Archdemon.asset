@@ -17,6 +17,8 @@ MonoBehaviour:
   _animations: {fileID: 9100000, guid: 72643e9f6666f6a47ad6687737f63e85, type: 2}
   _moveSpeed: 1.5
   _hitPoints: 3
-  _scoreValue: 4
+  _damage: 1
   _colliderRadius: 0.285
   _colliderOffset: {x: 0, y: -0.15}
+  _scoreValue: 4
+  _killGoldAmount: 3

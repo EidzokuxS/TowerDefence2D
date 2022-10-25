@@ -9,6 +9,12 @@ namespace TowerDefence
     [RequireComponent(typeof(TD_PatrolController))]
     public class Enemy : MonoBehaviour
     {
+        #region Properties
+
+        private int _damage;
+        private int _killGoldAmount;
+
+        #endregion
 
         #region Public API
 
@@ -28,26 +34,36 @@ namespace TowerDefence
             collider.radius = asset._colliderRadius;
             collider.offset = asset._colliderOffset;
 
+            _damage = asset._damage;
+            _killGoldAmount = asset._killGoldAmount;
         }
 
-        [CustomEditor(typeof(Enemy))]
-
-        public class EnemyInspector : Editor
+        public void DamagePlayer()
         {
-            public override void OnInspectorGUI()
-            {
-                base.OnInspectorGUI();
-
-                EnemyAsset asset = EditorGUILayout.ObjectField(null, typeof(EnemyAsset), false) as EnemyAsset;
-                if (asset)
-                {
-                    (target as Enemy).UseAssetSettings(asset);
-                }
-            }
+            Player.Instance.TakeDamage(_damage);
         }
 
+        public void DropGoldOnDeath()
+        {
+            (Player.Instance as TDPlayer).ChangeGold(_killGoldAmount);
+        }
 
         #endregion
+    }
+
+    [CustomEditor(typeof(Enemy))]
+    public class EnemyInspector : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+
+            EnemyAsset asset = EditorGUILayout.ObjectField(null, typeof(EnemyAsset), false) as EnemyAsset;
+            if (asset)
+            {
+                (target as Enemy).UseAssetSettings(asset);
+            }
+        }
     }
 
 }

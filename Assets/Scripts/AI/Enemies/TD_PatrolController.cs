@@ -1,10 +1,15 @@
 using SpaceShooter;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace TowerDefence
 {
 	public class TD_PatrolController : AIController
 	{
 		#region Properties
+
+		[SerializeField] private UnityEvent OnPathEnd;
+
 		private Path _path;
 		private int pathIndex;
 		#endregion
@@ -25,6 +30,7 @@ namespace TowerDefence
 			}
 			else
 			{
+				OnPathEnd.Invoke();
 				Destroy(gameObject);
 			}
 		}
