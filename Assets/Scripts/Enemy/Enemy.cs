@@ -40,12 +40,12 @@ namespace TowerDefence
 
         public void DamagePlayer()
         {
-            Player.Instance.TakeDamage(_damage);
+            TDPlayer.Instance.ReduceHealth(_damage);
         }
 
         public void DropGoldOnDeath()
         {
-            (Player.Instance as TDPlayer).ChangeGold(_killGoldAmount);
+            TDPlayer.Instance.ChangeGold(_killGoldAmount);
         }
 
         #endregion

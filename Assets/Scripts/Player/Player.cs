@@ -23,6 +23,7 @@ namespace SpaceShooter
         //[SerializeField] private MovementController _movementController;
 
         private int _currentLives;
+        public int CurrentLives => _currentLives;
 
         #endregion
 
@@ -31,6 +32,8 @@ namespace SpaceShooter
         {
             base.Awake();
 
+            _currentLives = _livesAmount;
+
             if (_ship != null)
                 Destroy(_ship.gameObject);
 
@@ -38,8 +41,6 @@ namespace SpaceShooter
         }
         private void Start()
         {
-            _currentLives = _livesAmount;
-
             if (_ship != null)
                 _ship.EventOnDeath.AddListener(OnShipDestruction);
 
@@ -75,17 +76,18 @@ namespace SpaceShooter
                 //_movementController.SetTargetShip(_ship);
             }
         }
-        #endregion
 
-        #region Public API
-
-        public void TakeDamage(int damage)
+        protected void TakeDamage(int damage)
         {
             _currentLives -= damage;
 
             if (_livesAmount <= 0)
                 LevelSequenceController.Instance.FinishCurrentLevel(false);
         }
+
+        #endregion
+
+        #region Public API
 
         public void AddKill()
         {
